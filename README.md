@@ -59,4 +59,4 @@ Today we have an entire generation of developers who know MEAN stack, Mongoose, 
 
 This ecosystem although it was very important and necessary at the start, for example, if there wouldn’t have been npm, Node might not have been at the same place it’s today. But it doesn’t mean that we should keep on relying on plenty of frameworks now as the core Node.js APIs are very much stable now. But most Node developers don’t even know about core Node APIs. They’re just an expert of Express and Mongoose, not necessarily Node.
 
-**We’re going to reverse this trend in this writeup!** 😎
+*We’re going to reverse this trend in this writeup! 😎*
