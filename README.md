@@ -1,4 +1,4 @@
-# Learn Core Node.js 🚀
+# Learn Core Node.js 🚀 (Note: Work in Progress)
 It's time to learn Node core before you bury yourself in npm packages.
 
 ## Introduction
@@ -60,3 +60,49 @@ Today we have an entire generation of developers who know MEAN stack, Mongoose, 
 This ecosystem although it was very important and necessary at the start, for example, if there wouldn’t have been npm, Node might not have been at the same place it’s today. But it doesn’t mean that we should keep on relying on plenty of frameworks now as the core Node.js APIs are very much stable now. But most Node developers don’t even know about core Node APIs. They’re just an expert of Express and Mongoose, not necessarily Node.
 
 *We’re going to reverse this trend in this writeup! 😎*
+
+### What is V8, exactly?
+
+Node, as you may have heard, is built on top of the Chrome V8 JavaScript engine. So to properly understand Node, we should understand V8 and JavaScript engine first.
+
+Here is a takeaway: Modern computers only understand "machine code" natively. But developers, on the other hand, tend to write code using high-level languages like JavaScript, Python, etc, because the low-level code only consists of 0s and 1s and not super fun to write stuff directly.
+
+In reality, there is no clear distinction among low-level and high-level languages, for people working directly on machine code, C++ might be a high-level language and for people working with Node.js, C++ might be a low-level language.
+
+But one thing is obvious, code written in languages like JavaScript, C++, Python or Ruby, etc. is "alien" to a computer and it can't understand it.
+
+So, the question is, from what steps a code (written in languages mentioned above) follows through before it becomes "native" for computers to understand.
+
+In order to execute high-level code, the computer uses:
+
+* Interpreters
+* Compilers
+* Transpilers
+
+There are also other things in between, but we're not considering them for the sake of brevity.
+
+#### Compiler
+Takes source code and turn it into an executable file (a file full of machine code that a computer can understand)
+
+#### Transpiler
+Takes source code and turns it into the source code of another type. A common example of transpiling is turning CoffeeScript into JavaScript.
+
+#### Interpreter
+Takes source code and directly executes it by taking real-time intermediate steps such as compiling and optimizing on runtime. But they don't leave any artifacts behind as compiler does.
+
+*So, what is V8?*
+
+V8 is a JavaScript engine that converts JavaScript into machine code by using a Just-in-Time (JIT) compiler. The main difference here is that it does not produce any bytecode or executable.
+
+If you ever interacted with Chrom DevTools Console REPL, that's V8 behind the scenes, executing your JavaScript.
+
+However, V8 is not the only JavaScript engine, there are some other engines as well:
+
+* JavaScriptCore (developed by engineers at Apple to power JavaScript in iOS and Safari)
+* SpiderMonkey (developed by engineers at Mozilla and being used in Firefox browser)
+* Chakra (developed by engineers at Microsoft and being used there)
+
+Interestingly, SpiderMonkey was the first JavaScript engine, written by Brenden Eich, the same guy who initially developed JavaScript. He was working at Netscape and developed SpiderMonkey to be used in Netscape Navigator.
+
+So, browsers, apart from doing plenty of other things, embeds JavaScript engines within them to execute JavaScript.
+Node.js does exactly the same, it also does a lot of things and in order to execute JavaScript it embeds V8.
