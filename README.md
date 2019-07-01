@@ -106,3 +106,45 @@ Interestingly, SpiderMonkey was the first JavaScript engine, written by Brenden 
 
 So, browsers, apart from doing plenty of other things, embeds JavaScript engines within them to execute JavaScript.
 Node.js does exactly the same, it also does a lot of things and in order to execute JavaScript it embeds V8.
+
+### What is Node.js, exactly?
+Node.js is a server-side JavaScript runtime environment.
+If you recall what V8 is, V8 is the car's engine and drivetrain. Node.js is everything else that makes the care and you're the driver.
+
+In more technical terms, Node.js is a C++ application that embeds V8.
+Node.js now presents itself as two applications:
+
+* A script processor
+* A REPL (Read Eval Print Loop)
+
+#### Script Processor
+You call the script processor from Terminal or CMD as follows:
+
+```bash
+node {script name}
+```
+
+For example:
+
+```bash
+node index.js
+```
+
+When you invoke such a script, Node.js does not just directly pass `index.js` to V8 but it first initializes a process named as `Event Loop`.
+
+#### Event Loop
+The simplest explanation of Event Loop could be:
+The event loop is "continually" checking if there's any new task for Node.js to do.
+Each pass, or in technical terms, each "tick" of the event loop checks if there's anything else is pending to do.
+
+##### Event Queue
+Now you might be thinking that `index.js` should be processed right away. And the answer is both, yes and no.
+Remember that JavaScript contains two kinds of tasks, synchronous and asynchronous. Synchronous tasks are processed right away, but asynchronous tasks are placed in the event queue and are executed later in time.
+
+As soon as task lengths in event queue downs to 0, the event loop process finishes, because there's no event left.
+
+Many applications like servers that continually needs to listen to the requests, they continually create new tasks in event queue in order to keep running event loop otherwise it will exit the process.
+
+None-blocking asynchronous tasks such as `setTimeout`, `setInterval`, API calls using `fetch` or any such asynchronous primitive, gets added to event queue and Node process them whenever it can.
+
+In many programming languages, everything you do is blocking. For example, if you have a sequence of tasks, then the single thread will execute the first task and other tasks will be blocked. In some cases, this behavior is recommended but in the case of modern web apps, they need to handle and process multiple things at a single time.
